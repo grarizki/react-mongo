@@ -83,17 +83,17 @@ export default function RecordList() {
     return (
         <div>
             <h3 className="text-center">Employee List</h3>
-            <table className="table table-striped" style={{ marginTop: 20 }}>
+            <table className="table table-striped rounded" style={{ marginTop: 20 }}>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
+                        <th className="pointer" onClick={() => sort("name")}>Name</th>
+                        <th className="pointer" onClick={() => sort("position")} > Position</th>
                         <th className="pointer" onClick={() => sort("level")}>Level</th>
-                        <th className="">Action</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>{recordList()}</tbody>
             </table>
-        </div>
+        </div >
     );
 }
