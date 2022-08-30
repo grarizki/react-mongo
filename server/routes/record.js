@@ -5,6 +5,8 @@ const express = require("express");
 // The router will be added as a middleware and will take control of requests starting with path /record.
 const recordRoutes = express.Router();
 
+const uri = process.env.MONGODB_URI;
+
 // This will help us connect to the database
 const dbo = require("../db/conn");
 
@@ -14,6 +16,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you get a list of all the records.
 recordRoutes.route("/record").get(function (req, res) {
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
     let db_connect = dbo.getDb("employees");
     db_connect
         .collection("records")
