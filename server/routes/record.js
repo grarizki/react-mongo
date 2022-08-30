@@ -60,7 +60,14 @@ recordRoutes.route("/update/:id").post(function (req, response) {
             position: req.body.position,
             level: req.body.level,
         },
-    }
+    };
+    db_connect
+        .collection("records")
+        .updateOne(myquery, newvalues, function (err, res) {
+            if (err) throw err;
+            console.log("1 document updated");
+            response.json(res);
+        });
 });
 
 // This section will help you delete a record
