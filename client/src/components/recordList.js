@@ -21,6 +21,19 @@ const Record = (props) => (
 
 export default function RecordList() {
     const [records, setRecords] = useState([]);
+    const [order, setOrder] = useState("ASC")
+    const sort = (col) => {
+        if (order === "ASC") {
+            const sorted = [...records].sort((a, b) => a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1);
+            setRecords(sorted)
+            setOrder("DSC")
+        }
+        if (order === "DSC") {
+            const sorted = [...records].sort((a, b) => a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1);
+            setRecords(sorted)
+            setOrder("ASC")
+        }
+    }
 
     // This method fetches the records from the database.
     useEffect(() => {
@@ -74,7 +87,7 @@ export default function RecordList() {
                     <tr>
                         <th>Name</th>
                         <th>Position</th>
-                        <th>Level</th>
+                        <th onClick={() => sort("level")}>Level</th>
                         <th>Action</th>
                     </tr>
                 </thead>
