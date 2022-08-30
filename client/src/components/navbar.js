@@ -18,7 +18,7 @@ export default function Navbar() {
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item ">
                             <NavLink className="nav-link " to="/create">
-                                <button class="rounded">Create Record</button>
+                                <button class="rounded btn-success text-white fw-bold px-2 py-2 mt-sm-2">Add New Employee</button>
                             </NavLink>
                         </li>
                     </ul>
